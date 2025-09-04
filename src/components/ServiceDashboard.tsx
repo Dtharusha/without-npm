@@ -12,6 +12,12 @@ export const ServiceDashboard: React.FC<ServiceDashboardProps> = ({
   onVehicleService, 
   onMaterialService 
 }) => {
+  const handleServiceClick = (serviceCallback: () => void) => {
+    // Scroll to top when selecting service
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    serviceCallback();
+  };
+
   const getDashboardTitle = () => {
     switch (user.role) {
       case 'consumer':
@@ -144,7 +150,7 @@ export const ServiceDashboard: React.FC<ServiceDashboardProps> = ({
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Service Vehicles */}
             <div 
-              onClick={onVehicleService}
+              onClick={() => handleServiceClick(onVehicleService)}
               className={`group rounded-3xl p-10 cursor-pointer hover:shadow-2xl transition-all duration-500 border ${
                 user.role === 'consumer' 
                   ? 'bg-gradient-to-br from-yellow-50 to-yellow-100 border-yellow-200 hover:border-yellow-300'
@@ -197,7 +203,7 @@ export const ServiceDashboard: React.FC<ServiceDashboardProps> = ({
 
             {/* Construction Materials */}
             <div 
-              onClick={onMaterialService}
+              onClick={() => handleServiceClick(onMaterialService)}
               className={`group rounded-3xl p-10 cursor-pointer hover:shadow-2xl transition-all duration-500 border ${
                 user.role === 'consumer' 
                   ? 'bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 hover:border-blue-300'

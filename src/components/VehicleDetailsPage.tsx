@@ -55,10 +55,14 @@ export const VehicleDetailsPage: React.FC<VehicleDetailsPageProps> = ({ vehicle,
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleCall = (phone: string) => {
+    // Scroll to top when making calls
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     window.open(`tel:${phone}`, '_self');
   };
 
   const handleSMS = (phone: string, vehicleName: string, supplierName: string) => {
+    // Scroll to top when sending SMS
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     const message = `Hi ${supplierName}, I'm interested in renting your ${vehicleName}. Can you provide more details about availability and rates?`;
     const smsUrl = `sms:${phone}?body=${encodeURIComponent(message)}`;
     window.open(smsUrl, '_self');

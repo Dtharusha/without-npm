@@ -60,10 +60,14 @@ export const MaterialListingPage: React.FC<MaterialListingPageProps> = ({ onBack
   const availableCategories = [...new Set(materialItems.map(m => m.category))];
 
   const handleCall = (phone: string) => {
+    // Scroll to top when making calls
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     window.open(`tel:${phone}`, '_self');
   };
 
   const handleMessage = (phone: string, supplierName: string, materialName: string) => {
+    // Scroll to top when messaging
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     const message = `Hi ${supplierName}, I'm interested in your ${materialName}. Can you provide more details about availability and pricing?`;
     const whatsappUrl = `https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

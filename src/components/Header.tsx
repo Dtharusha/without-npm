@@ -86,6 +86,9 @@ export const Header: React.FC<HeaderProps> = ({
   const navItems = getNavItems();
 
   const handleNavClick = (viewId: string) => {
+    // Scroll to top when navigating
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
     if (viewId === 'home') {
       onHomeNavigate();
     } else if (viewId === 'vehicle-management' || viewId === 'material-management') {
@@ -261,6 +264,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   key={item.id}
                   onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     handleNavClick(item.id);
                     onMenuClick(); // Close menu
                   }}
@@ -274,6 +278,7 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               ))}
               
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
               {!user && (
                 <div className="pt-4 border-t border-gray-200 space-y-2">
                   <button

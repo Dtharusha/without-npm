@@ -306,11 +306,16 @@ function App() {
   };
 
   const handleNavigate = (view: ViewType) => {
+    // Scroll to top when navigating
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     setCurrentView(view);
     setIsMenuOpen(false);
   };
 
   const handleHomeNavigation = () => {
+    // Scroll to top when navigating home
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
     if (user) {
       switch (user.role) {
         case 'consumer':
@@ -332,6 +337,8 @@ function App() {
   };
 
   const handleVehicleSelect = (vehicle: any) => {
+    // Scroll to top when selecting vehicle
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     setSelectedVehicle(vehicle);
     setCurrentView('vehicle-details');
   };
